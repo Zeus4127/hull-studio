@@ -13,6 +13,7 @@ if(S){var money=function(n){return 'A$'+Math.round(n).toLocaleString('en-AU')},c
 S.textContent='From '+money(n);d.getElementById('kHalf1').textContent=money(n/2);d.getElementById('kHalf2').textContent=money(n/2);
 var c=d.getElementById('kCare'),m='from '+money(+p.dataset.care)+' a month';d.getElementById('kCareP').textContent=m;d.getElementById('kMonth').textContent=c.checked?m:'Not included'};
 [].forEach.call(d.querySelectorAll('.k-build input'),function(i){i.addEventListener('change',calc)});calc()}
+var V=d.querySelector('.k-hero video');if(V&&matchMedia('(prefers-reduced-motion: reduce)').matches){V.removeAttribute('autoplay');V.pause()}
 var Q=d.getElementById('kQ');
 if(Q)Q.addEventListener('input',function(){var v=Q.value.trim().toLowerCase(),n=0;[].forEach.call(d.querySelectorAll('[data-sec=faq] details'),function(x){var hit=!v||x.textContent.toLowerCase().indexOf(v)>=0;x.hidden=!hit;if(hit)n++});d.getElementById('kNone').hidden=n>0});
 })();
