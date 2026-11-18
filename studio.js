@@ -1,10 +1,11 @@
 (function(){
-var d=document,L=d.getElementById('kLap'),P=d.getElementById('kPh');
+var d=document;[].forEach.call(d.querySelectorAll('.k-plus'),function(b){b.addEventListener('click',function(){[].forEach.call(b.parentNode.querySelectorAll('.k-more'),function(x){x.hidden=false});var n=b.parentNode.querySelector('.k-more');b.remove();if(n)n.focus()})});
+d=document;var L=d.getElementById('kLap'),P=d.getElementById('kPh');
 function fit(){[].forEach.call(d.querySelectorAll('.k-view'),function(v){var w=+v.dataset.w,f=v.firstElementChild,s=v.clientWidth/w;f.style.width=w+'px';f.style.height=Math.ceil(v.clientHeight/s)+'px';f.style.transform='scale('+s+')'})}
 if(L){var t=d.querySelector('#kT [aria-pressed=true]').dataset.t,k=d.querySelector('#kD [aria-pressed=true]').dataset.d,seen=false;
 var show=function(){var u='designs/'+t+'-'+k+'.html';if(seen){L.src=u;P.src=u}d.getElementById('kOpen').href=u;fit()};
-var bind=function(id,key){var bs=d.querySelectorAll('#'+id+' button');[].forEach.call(bs,function(b){b.addEventListener('click',function(){[].forEach.call(bs,function(x){x.setAttribute('aria-pressed',x===b)});if(key==='t')t=b.dataset.t;else k=b.dataset.d;show()})})};
-bind('kT','t');bind('kD','d');addEventListener('resize',fit);
+var bind=function(id,key){var bs=d.querySelectorAll('#'+id+' button[data-'+key+']');[].forEach.call(bs,function(b){b.addEventListener('click',function(){[].forEach.call(bs,function(x){x.setAttribute('aria-pressed',x===b)});if(key==='t')t=b.dataset.t;else k=b.dataset.d;show()})})};
+bind('kT','t');bind('kD','d');var G=d.querySelectorAll('#kG button');[].forEach.call(G,function(b){b.addEventListener('click',function(){[].forEach.call(G,function(x){x.setAttribute('aria-pressed',x===b)});[].forEach.call(d.querySelectorAll('#kT [data-grp]'),function(r){r.hidden=r.dataset.grp!==b.dataset.g});var f=d.querySelector('#kT [data-grp='+b.dataset.g+'] button[data-t]');if(f)f.click()})});addEventListener('resize',fit);
 if('IntersectionObserver' in window){new IntersectionObserver(function(e,o){if(e[0].isIntersecting){seen=true;show();o.disconnect()}},{rootMargin:'600px'}).observe(L)}else{seen=true}
 show()}
 var S=d.getElementById('kSum');
