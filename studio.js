@@ -7,6 +7,7 @@ var show=function(){var u='designs/'+t+'-'+k+'.html';if(seen){L.src=u;P.src=u}d.
 var bind=function(id,key){var bs=d.querySelectorAll('#'+id+' button[data-'+key+']');[].forEach.call(bs,function(b){b.addEventListener('click',function(){[].forEach.call(bs,function(x){x.setAttribute('aria-pressed',x===b)});if(key==='t')t=b.dataset.t;else k=b.dataset.d;show()})})};
 bind('kT','t');bind('kD','d');var G=d.querySelectorAll('#kG button');[].forEach.call(G,function(b){b.addEventListener('click',function(){[].forEach.call(G,function(x){x.setAttribute('aria-pressed',x===b)});[].forEach.call(d.querySelectorAll('#kT [data-grp]'),function(r){r.hidden=r.dataset.grp!==b.dataset.g});var f=d.querySelector('#kT [data-grp='+b.dataset.g+'] button[data-t]');if(f)f.click()})});addEventListener('resize',fit);
 if('IntersectionObserver' in window){new IntersectionObserver(function(e,o){if(e[0].isIntersecting){seen=true;show();o.disconnect()}},{rootMargin:'600px'}).observe(L)}else{seen=true}
+var Q=new URLSearchParams(location.search),qt=Q.get('t'),qd=Q.get('d');if(qt){var tb=d.querySelector('#kT button[data-t="'+qt+'"]');if(tb){var row=tb.closest('[data-grp]'),gb=d.querySelector('#kG [data-g="'+row.dataset.grp+'"]');if(gb)gb.click();if(tb.hidden){var pl=row.querySelector('.k-plus');if(pl)pl.click()}tb.click()}}if(qd){var db=d.querySelector('#kD button[data-d="'+qd+'"]');if(db)db.click()}
 show()}
 var S=d.getElementById('kSum');
 if(S){var money=function(n){return 'A$'+Math.round(n).toLocaleString('en-AU')},calc=function(){var p=d.querySelector('input[name=kp]:checked'),n=+p.value;
