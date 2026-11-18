@@ -3,10 +3,11 @@ var d=document;[].forEach.call(d.querySelectorAll('.k-plus'),function(b){b.addEv
 d=document;var L=d.getElementById('kLap'),P=d.getElementById('kPh');
 function fit(){[].forEach.call(d.querySelectorAll('.k-view'),function(v){var w=+v.dataset.w,f=v.firstElementChild,s=v.clientWidth/w;f.style.width=w+'px';f.style.height=Math.ceil(v.clientHeight/s)+'px';f.style.transform='scale('+s+')'})}
 if(L){var t=d.querySelector('#kT [aria-pressed=true]').dataset.t,k=d.querySelector('#kD [aria-pressed=true]').dataset.d,seen=false;
-var show=function(){var u='designs/'+t+'-'+k+'.html';if(seen){L.src=u;P.src=u}d.getElementById('kOpen').href=u;fit()};
+var show=function(){var u='designs/'+t+'-'+k+'.html';if(seen){L.src=u;P.src=u}d.getElementById('kOpen').href=u;var o2=d.getElementById('kOpen2');if(o2)o2.href=u;var pb=d.querySelector('#kD [aria-pressed=true]'),ds=d.getElementById('kDesc');if(ds&&pb)ds.textContent=pb.dataset.desc||'';[].forEach.call(d.querySelectorAll('.k-lay'),function(x){x.setAttribute('aria-pressed',x.dataset.pick===k)});fit()};
 var bind=function(id,key){var bs=d.querySelectorAll('#'+id+' button[data-'+key+']');[].forEach.call(bs,function(b){b.addEventListener('click',function(){[].forEach.call(bs,function(x){x.setAttribute('aria-pressed',x===b)});if(key==='t')t=b.dataset.t;else k=b.dataset.d;show()})})};
 bind('kT','t');bind('kD','d');
 if('IntersectionObserver' in window){new IntersectionObserver(function(e,o){if(e[0].isIntersecting){seen=true;show();o.disconnect()}},{rootMargin:'600px'}).observe(L)}else{seen=true}
+[].forEach.call(d.querySelectorAll('.k-lay'),function(b){b.addEventListener('click',function(){var x=d.querySelector('#kD [data-d="'+b.dataset.pick+'"]');if(x){x.click();d.getElementById('designs').scrollIntoView({behavior:'smooth'})}})});
 var Q=new URLSearchParams(location.search),qt=Q.get('t'),qd=Q.get('d');if(qt){var tb=d.querySelector('#kT button[data-t="'+qt+'"]');if(tb){var row=tb.closest('[data-grp]');if(tb.hidden){var pl=row.querySelector('.k-plus');if(pl)pl.click()}tb.click()}}if(qd){var db=d.querySelector('#kD button[data-d="'+qd+'"]');if(db)db.click()}
 show()}
 var S=d.getElementById('kSum');
