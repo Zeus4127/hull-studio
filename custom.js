@@ -1,7 +1,7 @@
 (function(){
 var d=document,R=d.documentElement,K='cm_custom',S={},main=d.getElementById('main');
 var cs=d.currentScript,show=!cs||!cs.src||cs.dataset.show==='1'||/[?&]customise/.test(location.search);
-if(!main||!show||/[?&]shot/.test(location.search))return;
+if(!main||!show||window.top!==window.self||/[?&]shot/.test(location.search))return;
 try{S=JSON.parse(localStorage.getItem(K)||'{}')||{}}catch(e){S={}}
 var NAMES={facts:'Numbers band',about:'About',services:'Services',gallery:'Photo wall',capability:'Capability',projects:'Projects',steps:'How we work',branches:'Branches',faq:'Questions'};
 function rgb(h){h=h.replace('#','');return[0,2,4].map(function(i){return parseInt(h.substr(i,2),16)})}
