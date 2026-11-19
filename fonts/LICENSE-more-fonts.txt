@@ -1,0 +1,4 @@
+Space Grotesk, Outfit, Playfair Display and Archivo are licensed under the SIL Open Font License 1.1 (free for commercial use).
+Source: Fontsource (fontsource.org), variable latin files.
+
+IBM Plex Mono is licensed under the SIL Open Font License 1.1. Source: Fontsource.

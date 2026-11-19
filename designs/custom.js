@@ -18,7 +18,7 @@ if(S.header==='light'){set('--hb','#fff');set('--hc','var(--p)');set('--hl','var
 if(S.header==='dark'){set('--hb','var(--pd)');set('--hc','#fff');set('--hl','rgba(255,255,255,.12)')}
 if(S.corners!=null)set('--r',S.corners+'px');
 if(S.buttons)set('--br',S.buttons==='pill'?'999px':'var(--r)');
-if(S.font)set('--hf',{inter:'Inter',fraunces:'Fraunces',barlow:'BarlowC',sora:'Sora'}[S.font]||'Sora');
+if(S.font)set('--hf',{inter:'Inter',fraunces:'Fraunces',barlow:'BarlowC',sora:'Sora',spaceg:'SpaceG',outfit:'Outfit',playfair:'Playfair',archivo:'Archivo'}[S.font]||'Sora');
 var h=main.querySelector('.hero.full');if(h&&S.hero)h.classList.toggle('as-split',S.hero==='split');
 var end=main.querySelector('.cta'),by={};secs().forEach(function(s){by[s.dataset.sec]=s});
 (S.order||[]).forEach(function(k){if(by[k])main.insertBefore(by[k],end)});

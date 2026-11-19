@@ -15,5 +15,5 @@ h+='<ul class="k-list">'+checks.filter(function(c){return A[c[0]]&&A[c[0]].score
 if(A['largest-contentful-paint'])h+='<li class="'+(A['largest-contentful-paint'].score>=0.9?'ok':'bad')+'">Main content shows in '+e(A['largest-contentful-paint'].displayValue)+' on a phone</li>';
 h+='</ul>';var low=cats.some(function(c){return ((C[c[0]]||{}).score||0)<0.9});
 O.innerHTML=h+next(u,low?'Your site is losing you work. We can fix that.':'Your site is in good shape. Want it to win more work?')}).catch(function(){
-O.innerHTML='<p class="k-wait">We could not run the instant check just now. Send us the address and we will check it by hand and email you a short report, free.</p>'+next(u,'We will check '+e(u.replace(/^https?:\/\//,''))+' for you.')})}
+O.innerHTML='<p class="k-wait">We could not run the instant check just now. Send us the address and we will check it by hand and email you a short report, free.</p>'+next(u,'We will check '+e(u.replace(/^https?:[/][/]/,''))+' for you.')})}
 F.addEventListener('submit',function(ev){ev.preventDefault();var u=d.getElementById('kUrl').value.trim();if(u)run(u)});if(U)run(U)})();
