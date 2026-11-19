@@ -3,7 +3,7 @@ var d=document,R=d.documentElement,K='cm_custom',S={},main=d.getElementById('mai
 var cs=d.currentScript,show=!cs||!cs.src||cs.dataset.show==='1'||/[?&]customise/.test(location.search);
 if(!main||!show||window.top!==window.self||/[?&]shot/.test(location.search))return;
 try{S=JSON.parse(localStorage.getItem(K)||'{}')||{}}catch(e){S={}}
-var NAMES={facts:'Numbers band',about:'About',services:'Services',gallery:'Photo wall',capability:'Capability',projects:'Projects',steps:'How we work',branches:'Branches',faq:'Questions',careers:'Careers',badges:'Licences and badges',reviews:'Reviews'};
+var NAMES={facts:'Numbers band',about:'About',services:'Services',gallery:'Photo wall',capability:'Capability',projects:'Projects',steps:'How we work',branches:'Branches',faq:'Questions',careers:'Careers',badges:'Licences and badges',credentials:'Licence and insurance cards',before_after:'Before and after',costs:'Cost guide',reviews:'Reviews'};
 function rgb(h){h=h.replace('#','');return[0,2,4].map(function(i){return parseInt(h.substr(i,2),16)})}
 function hex(c){return'#'+c.map(function(v){v=Math.max(0,Math.min(255,Math.round(v))).toString(16);return v.length<2?'0'+v:v}).join('')}
 function mix(a,b,k){return a.map(function(v,i){return v+(b[i]-v)*k})}

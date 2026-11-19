@@ -13,6 +13,7 @@ function rg(h){h=h.replace('#','');return[0,2,4].map(function(i){return parseInt
 function mx(a,b,q){return a.map(function(v,i){return v+(b[i]-v)*q})}
 function lm(c){var f=c.map(function(v){v/=255;return v<=.03928?v/12.92:Math.pow((v+.055)/1.055,2.4)});return .2126*f[0]+.7152*f[1]+.0722*f[2]}
 function cn(a,b){var x=lm(a),y=lm(b);return(Math.max(x,y)+.05)/(Math.min(x,y)+.05)}
+
 function paint(){[L,P].forEach(function(F){var D2,r;try{D2=F.contentDocument;r=D2&&D2.documentElement}catch(e){}if(!r)return;var s=r.style;['--p','--pd','--pdt','--a','--a2','--al','--at','--hf','--r','--br','--hb','--hc','--hl','--sh'].forEach(function(v){s.removeProperty(v)});
 if(C.p){var p=rg(C.p),pd=mx(p,[0,0,0],.32);s.setProperty('--p',hx(p));s.setProperty('--pd',hx(pd));s.setProperty('--pdt',hx(pd)+'d9')}
 if(C.a){var a=rg(C.a),n=0;while(Math.max(cn(a,[255,255,255]),cn(a,[20,24,29]))<4.6&&n++<20)a=mx(a,[0,0,0],.04);var a2=a;n=0;while(cn(a2,[240,236,224])<4.6&&n++<30)a2=mx(a2,[0,0,0],.08);var al=a,pp=rg(C.p||getComputedStyle(r).getPropertyValue('--p').trim()||'#12305c');n=0;while(cn(al,pp)<4.6&&n++<30)al=mx(al,[255,255,255],.1);
@@ -31,7 +32,7 @@ paint()});
 TR.addEventListener('input',function(e){var i=e.target;if(i.type==='color'){C[i.dataset.k]=i.value;press(i.closest('.k-sw'),null);press(TR.querySelector('.k-themes'),null);paint()}});
 d.getElementById('kReset').addEventListener('click',function(){C={};[].forEach.call(TR.querySelectorAll('button[aria-pressed]'),function(x){x.setAttribute('aria-pressed','false')});paint()});
 L.addEventListener('load',paint);P.addEventListener('load',paint)}
-[].forEach.call(d.querySelectorAll('.k-lay'),function(b){b.addEventListener('click',function(){var x=d.querySelector('#kD [data-d="'+b.dataset.pick+'"]');if(x){x.click();d.getElementById('designs').scrollIntoView({behavior:'smooth'})}})});
+[].forEach.call(d.querySelectorAll('.k-lay'),function(b){b.addEventListener('click',function(){var x=d.querySelector('#kD [data-d="'+b.dataset.pick+'"]');if(x){x.click();d.getElementById('designs').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'})}})});
 var Q=new URLSearchParams(location.search),qt=Q.get('t'),qd=Q.get('d');if(qt){var tb=d.querySelector('#kT button[data-t="'+qt+'"]');if(tb){var row=tb.closest('[data-grp]');if(tb.hidden){var pl=row.querySelector('.k-plus');if(pl)pl.click()}tb.click()}}if(qd){var db=d.querySelector('#kD button[data-d="'+qd+'"]');if(db)db.click()}
 show()}
 var S=d.getElementById('kSum');
